@@ -43,7 +43,7 @@
     <link rel="stylesheet" href="css/responsive.css" />
   </head>
 
-  <body>
+  <body onload="checkCookie()">
     <!-- section1 -->
     <header class="header">
       <div class="container">
@@ -69,11 +69,7 @@
               </li>
             </ul>
           </nav>
-          <ul class="top-ul">
-            <li>
-              <a href="#"><i class="fa-solid fa-user icon"></i></a>
-            </li>
-          </ul>
+
           <div class="burger-menu" id="burger">
             <div class="line line1"></div>
             <div class="line line2"></div>
@@ -385,7 +381,6 @@
     </section>
     <section id="contact" class="contact">
       <div class="container">
-        <h2 class="contact-title">CONTACT</h2>
         <div class="contact-wrapper">
           <div class="map-wrapper">
             <div class="map">
@@ -401,40 +396,80 @@
               ></iframe>
             </div>
           </div>
-          <form action="#">
-            <div class="form-wrapper">
-              <div class="main-input">
-                <label for="username"></label>
+          <div class="containerform">
+            <form id="signup" class="form">
+              <h1>Sign Up</h1>
+              <div class="form-field">
+                <label for="username">Username:</label>
                 <input
                   type="text"
+                  name="username"
                   id="username"
-                  name="name"
-                  placeholder="YOUR NAME"
-                  class="cont-forms"
+                  autocomplete="off"
                 />
-                <label for="user-Email"></label>
-                <input
-                  type="email"
-                  id="user-Email"
-                  name="user-email"
-                  placeholder="E-MAIL"
-                  class="cont-forms"
-                />
-                <label for="feedback"></label>
-                <textarea
-                  name="send-message"
-                  id="feedback"
-                  class="textarea-form"
-                  placeholder="ENTER YOUR FEEDBACK..."
-                ></textarea>
-                <button id="btn" class="cont-btn">SEND</button>
+                <small></small>
               </div>
-            </div>
-          </form>
+
+              <div class="form-field">
+                <label for="email">Email:</label>
+                <input type="text" name="email" id="email" autocomplete="off" />
+                <small></small>
+              </div>
+
+              <div class="form-field">
+                <label for="password">Password:</label>
+                <input
+                  type="password"
+                  name="password"
+                  id="password"
+                  autocomplete="off"
+                />
+                <small></small>
+              </div>
+              <div class="showpassword">
+                <label for="show_password">
+                  <input
+                    type="checkbox"
+                    name="show_password"
+                    id="show_password"
+                  />
+                  Show Password
+                </label>
+              </div>
+
+              <div class="form-field">
+                <input type="submit" value="Sign Up" class="btn" />
+              </div>
+            </form>
+          </div>
         </div>
       </div>
     </section>
+    <section>
+      <div class="containerapi">
+        <div class="post-wraper" id="post-block">
+          <div class="overlay" id="overlay">
+            <div class="postiscontent" id="postcontent"></div>
+            <div class="close" id="close">
+              <i class="fa-solid fa-circle-xmark"></i>
+            </div>
+          </div>
 
+          <div class="overlady-add" id="postForm">
+            <form action="" id="addPostForm" method="POST">
+              <div>
+                <input
+                  type="text"
+                  name="title"
+                  id="posttitle"
+                  placeholder="Title"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
     <footer>
       <div class="footer-bg">
         <div class="container">
@@ -450,34 +485,42 @@
 
               <div>
                 <div class="footer-nav-wrapper">
-                  <h4 class="footer-nav-title">CONTACT</h4>
+                  <!-- <h4 class="footer-nav-title">CONTACT</h4> -->
                   <ul class="foot-ul">
-                    <li class="foot-li">
-                      <i class="fa-solid fa-envelope foot-cont-icon"></i>
-                      <p>
-                        <a class="foot-a" href="mailto:sales@ikea.ge"
-                          >sales@ikea.ge</a
-                        >
-                      </p>
-                    </li>
-                    <li class="foot-li">
-                      <i class="fa-solid fa-phone foot-cont-icon"></i>
-                      <p>
-                        <a class="foot-a" href="tel:+995(32)2434340"
-                          >995(32)2434340</a
-                        >
-                      </p>
-                    </li>
-
-                    <li class="foot-li">
-                      <i class="fa-solid fa-location-dot foot-cont-icon"></i>
-                      <a
-                        class="foot-a"
-                        href="https://www.google.com/maps/place/19+Ilia+Chavchavadze+Avenue,+T'bilisi/@41.709863,44.769914,20z/data=!4m5!3m4!1s0x40447332ed103acf:0x1483559eb41622b2!8m2!3d41.7098494!4d44.7697097?hl=en"
-                        target="_blank"
-                        >910 Europa Blvd
-                      </a>
-                    </li>
+                    <button class="accordion">What is our Email?</button>
+                    <div class="panel">
+                      <li class="foot-li">
+                        <i class="fa-solid fa-envelope foot-cont-icon"></i>
+                        <p>
+                          <a class="foot-a" href="mailto:sales@ikea.ge"
+                            >sales@ikea.ge</a
+                          >
+                        </p>
+                      </li>
+                    </div>
+                    <button class="accordion">What is our Number?</button>
+                    <div class="panel">
+                      <li class="foot-li">
+                        <i class="fa-solid fa-phone foot-cont-icon"></i>
+                        <p>
+                          <a class="foot-a" href="tel:+995(32)2434340"
+                            >995(32)2434340</a
+                          >
+                        </p>
+                      </li>
+                    </div>
+                    <button class="accordion">What is our address?</button>
+                    <div class="panel">
+                      <li class="foot-li">
+                        <i class="fa-solid fa-location-dot foot-cont-icon"></i>
+                        <a
+                          class="foot-a"
+                          href="https://www.google.com/maps/place/19+Ilia+Chavchavadze+Avenue,+T'bilisi/@41.709863,44.769914,20z/data=!4m5!3m4!1s0x40447332ed103acf:0x1483559eb41622b2!8m2!3d41.7098494!4d44.7697097?hl=en"
+                          target="_blank"
+                          >910 Europa Blvd
+                        </a>
+                      </li>
+                    </div>
                   </ul>
                 </div>
               </div>
@@ -512,9 +555,7 @@
       </div>
     </footer>
     <!-- js/jquery links -->
-    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
-    <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-    <script src="slick/slick.min.js"></script>
+
     <script src="script.js"></script>
   </body>
 </html>
