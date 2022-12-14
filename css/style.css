@@ -4,7 +4,9 @@
 * Autoprefixer: v10.4.7
 * Browsers: last 4 version
 */
-
+body {
+  scroll-behavior: smooth;
+}
 .container {
   max-width: 1600px;
   width: 100%;
